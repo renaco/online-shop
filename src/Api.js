@@ -14,7 +14,7 @@ class Api {
                 let res = sampleProducts.filter(x => x.id === id);
                 resolve(res.length === 0 ? null : res[0]);
 
-            }, 1000)
+            }, 500)
         })
     }
 
@@ -72,7 +72,7 @@ class Api {
                 resolve(data)
 
 
-            }, 1000)
+            }, 500)
         })
 
 
