@@ -1,7 +1,7 @@
 import * as CONSTANTS from "./Constants";
 
 /*
- * Our application state.
+ * Some part of application state is stored in redux.
  */
 const initialState = {
     cartItems: [],
