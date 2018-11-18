@@ -19,7 +19,7 @@ import PriceDialog from '../PriceDialog/PriceDialog';
  */
 class ProductList extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
 
         /* We use this to avoid some race condition related issues, see below. */
@@ -98,14 +98,14 @@ class ProductList extends Component {
             maxPrice: this.getParamFromURL("maxPrice", newProps),
             sortValue: this.getParamFromURL("sortValue", newProps),
             usePriceFilter: this.getParamFromURL("usePriceFilter", newProps),
-        }).then((data)=>{
+        }).then((data) => {
 
             /* 
              * Without this check if user made one request and then quickly
              * another, you would temporarily see results from first request
              * on screen anyway.
              */
-            if(id !== this.fetchId) return;
+            if (id !== this.fetchId) return;
 
             this.setState({ loading: false, items: data })
         })
@@ -124,21 +124,26 @@ class ProductList extends Component {
         this.updateURL({ sortValue: e.value })
     }
 
+    /* Determine page title based on data from URL. */
+    pageTitle() {
+        let pageTitle;
+        if (this.getParamFromURL("category") === "popular") {
+            pageTitle = "Popular products";
+        } else if (this.getParamFromURL("directCategory")) {
+            pageTitle = this.getParamFromURL("category");
+        } else {
+            pageTitle = "Search results";
+        }
+        return pageTitle;
+    }
+
     render() {
 
-        let titleText = null;
-        if (this.getParamFromURL("category") === "popular") {
-            titleText = "Popular products";
-        } else if (this.getParamFromURL("directCategory")) {
-            titleText = this.getParamFromURL("category");
-        } else {
-            titleText = "Search results";
-        }
 
         return (
             <div className="product-list">
                 <div className="product-list-header">
-                    <div className="online-shop-title">{titleText}</div>
+                    <div className="online-shop-title">{this.pageTitle()}</div>
                     <div style={{ width: 500, marginTop: 5, display: "flex", flexGrow: 1, flexDirection: "row-reverse" }}>
 
                         <div style={{ width: 250 }}>
@@ -196,7 +201,7 @@ class ProductList extends Component {
                     onChange={(min, max) => this.setState({ minDraft: min, maxDraft: max, isDraft: true })}
                     onSave={() => {
                         if (this.state.isDraft) {
-                            this.setState({isDraft:false})
+                            this.setState({ isDraft: false })
                             this.updateURL({ minPrice: this.state.minDraft, maxPrice: this.state.maxDraft });
                         }
                         this.setState({ openPriceDialog: false })
