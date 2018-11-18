@@ -19,6 +19,13 @@ import PriceDialog from '../PriceDialog/PriceDialog';
  */
 class ProductList extends Component {
 
+    constructor(props){
+        super(props);
+
+        /* We use this to avoid some race condition related issues, see below. */
+        this.fetchId = 0;
+    }
+
     state = {
         loading: false,
         openPriceDialog: false,
@@ -80,6 +87,10 @@ class ProductList extends Component {
 
         this.setState({ loading: true })
 
+        this.fetchId++;
+
+        let id = this.fetchId;
+
         Api.searchData({
             category: this.getParamFromURL("category", newProps),
             term: this.getParamFromURL("term", newProps),
@@ -88,6 +99,14 @@ class ProductList extends Component {
             sortValue: this.getParamFromURL("sortValue", newProps),
             usePriceFilter: this.getParamFromURL("usePriceFilter", newProps),
         }).then((data)=>{
+
+            /* 
+             * Without this check if user made one request and then quickly
+             * another, you would temporarily see results from first request
+             * on screen anyway.
+             */
+            if(id !== this.fetchId) return;
+
             this.setState({ loading: false, items: data })
         })
 

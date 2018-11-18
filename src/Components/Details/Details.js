@@ -17,7 +17,7 @@ class ConnectedDetails extends Component {
 
     state = {
         relatedItems: [],
-        item: undefined,
+        item: null,
         loading: true,
     }
 
