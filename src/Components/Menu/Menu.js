@@ -57,16 +57,14 @@ class ConnectedMenu extends Component {
                                          * checks to determine if the navlink should be in active style or not.
                                          */
                                         if (location.search) {
-                                            /* Extract the QS from the item URL */
-                                            let itemCategory = queryString.parse(x.url.substring(x.url.indexOf("?")+1)).category;
-                                            
+                                            let itemCategory = queryString.parse(x.url.substring(x.url.indexOf("?"))).category;
+
                                             let currectCategory = queryString.parse(location.search).category;
                                             let isDirect = queryString.parse(location.search).directCategory==="true";
                                             
                                             return isDirect && itemCategory === currectCategory;
                                         }
-
-                                        /* If no QS, just compare to pathname. */
+                                     
                                         return x.url === location.pathname;
                                     }}
                                     style={{

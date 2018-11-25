@@ -12,9 +12,9 @@ import Tooltip from '@material-ui/core/Tooltip';
 import PriceDialog from '../PriceDialog/PriceDialog';
 
 /*
- * This component checks query string on which products to retrieve
- * and then makes a simulated request to the server based on that
- * (this happens initially and on any props change).
+ * Initially when this component is rendered is consults the query
+ * string on which products to retrieve and then does a simulated
+ * request to server based on that; it repeats this action also on any props change.
  * 
  */
 class ProductList extends Component {
@@ -124,7 +124,7 @@ class ProductList extends Component {
         this.updateURL({ sortValue: e.value })
     }
 
-    /* Determine page title based on data from URL. */
+    /* Determine page title */
     pageTitle() {
         let pageTitle;
         if (this.getParamFromURL("category") === "popular") {
