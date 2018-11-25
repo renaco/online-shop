@@ -5,6 +5,12 @@ This is an online shop prototoype (only front end) implemented using React, Redu
 
 ![alt text](https://raw.githubusercontent.com/giorgi-m/online-shop/master/src/Images/scrn.gif)
 
+Some features it has
+- searching using keyword based on categories
+- quick access to categories
+- price filters, sorting
+- shopping cart
+- related items
 
 # How to use
 
