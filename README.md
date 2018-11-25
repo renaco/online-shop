@@ -11,6 +11,7 @@ Some features it has
 - price filters, sorting
 - shopping cart
 - related items
+- protected routes (using fake authentication)
 
 # How to use
 
