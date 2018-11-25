@@ -1,6 +1,6 @@
 # Description
 
-This is an online shop prototoype (only front end) implemented using React, Redux and React router.
+This is an online shop prototype (only front end) implemented using React, Redux and React router.
 
 
 ![alt text](https://raw.githubusercontent.com/giorgi-m/online-shop/master/src/Images/scrn.gif)
