@@ -2,8 +2,8 @@
 
 This is an online shop prototype (only front end) implemented using React, Redux and React router.
 
-
-![alt text](https://raw.githubusercontent.com/giorgi-m/online-shop/master/src/Images/scrn.gif)
+<img src="https://raw.githubusercontent.com/giorgi-m/online-shop/master/src/Images/scrn.gif" width="820" height="420">
+ 
 
 Some features it has
 - searching using keyword based on categories
