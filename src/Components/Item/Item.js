@@ -7,12 +7,14 @@ import { connect } from "react-redux";
 import { addItemInCart } from "../../Redux/Actions"
 import { withRouter } from "react-router-dom";
 
+
+/*
+ * This is a card like component which shows info about single product (e.g. when you see search result of products).
+ * 
+ */
 class ConnectedItem extends Component {
 
-
     render() {
-
-
         return (
             <div className="item" style= {{height: this.props.mini? "220px": "320px",  width:this.props.mini?"170px":"220px"} } onClick={() => {
                 this.props.history.push('/details/' + this.props.item.id);
@@ -25,10 +27,8 @@ class ConnectedItem extends Component {
                 {!this.props.mini && <div className="details-btn-div">
                     <Button onClick={(e) => {
                         e.stopPropagation();
-
                         this.props.history.push('/details/' + this.props.item.id);
-                    }}  
-                    >
+                    }}>
                         Details
                     </Button>
                 </div>}
